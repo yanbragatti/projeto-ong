@@ -1,0 +1,337 @@
+/* =================================
+   DESIGN SYSTEM - ONG ESPERANÇA
+   ================================= */
+
+:root {
+
+    /* ===== CORES ===== */
+
+    --cor-primaria: #2E7D32;
+    --cor-primaria-escura: #1B5E20;
+    --cor-primaria-clara: #66BB6A;
+
+    --cor-secundaria: #F9A825;
+    --cor-secundaria-clara: #FFD54F;
+
+    --cor-neutra-escura: #212121;
+    --cor-neutra-media: #757575;
+    --cor-neutra-clara: #F5F5F5;
+
+    --cor-branca: #FFFFFF;
+
+
+    /* ===== TIPOGRAFIA ===== */
+
+    --tamanho-h1: 2.5rem;
+    --tamanho-h2: 2rem;
+    --tamanho-h3: 1.5rem;
+    --tamanho-texto: 1rem;
+    --tamanho-pequeno: 0.875rem;
+
+
+    /* ===== ESPAÇAMENTOS ===== */
+
+    --espaco-1: 0.25rem;
+    --espaco-2: 0.5rem;
+    --espaco-3: 0.75rem;
+    --espaco-4: 1rem;
+    --espaco-5: 1.5rem;
+    --espaco-6: 2rem;
+    --espaco-7: 3rem;
+    --espaco-8: 4rem;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-neutra-escura);
+    font-size: var(--tamanho-texto);
+}
+h1 {
+    font-size: var(--tamanho-h1);
+}
+
+h3 {
+    font-size: var(--tamanho-h3);
+}
+
+p {
+    font-size: var(--tamanho-texto);
+}
+
+small {
+    font-size: var(--tamanho-pequeno);
+}
+
+header {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    text-align: center;
+    padding: var(--espaco-7);
+}
+
+nav {
+    background-color: var(--cor-primaria-escura);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espaco-4);
+    padding: var(--espaco-4);
+}
+
+nav a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 900px;
+    margin: var(--espaco-7) auto;
+    padding: var(--espaco-6);
+}
+
+/* =================================
+   GRID DE 12 COLUNAS
+   ================================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-4);
+    width: 100%;
+}
+
+section {
+    background-color: var(--cor-branca);
+    margin-bottom: var(--espaco-6);
+    padding: var(--espaco-6);
+    border-radius: 10px;
+    grid-column: span 12;
+}
+
+h2 {
+    color: var(--cor-primaria);
+    font-size: var(--tamanho-h2);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: var(--espaco-5) auto;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input,
+textarea {
+    padding: var(--espaco-3);
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 5px;
+    font-size: var(--tamanho-texto);
+}
+
+button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branca);
+    border: none;
+    padding: var(--espaco-3);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--tamanho-texto);
+}
+
+button:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+footer {
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-branca);
+    text-align: center;
+    padding: var(--espaco-5);
+}
+
+/* =================================
+   BADGES - FEEDBACK
+   ================================= */
+
+.badge {
+    display: inline-block;
+    padding: var(--espaco-2) var(--espaco-3);
+    border-radius: 999px;
+    font-size: var(--tamanho-pequeno);
+    font-weight: bold;
+    margin-right: var(--espaco-2);
+}
+
+.badge-sucesso {
+    background-color: var(--cor-primaria-clara);
+    color: var(--cor-neutra-escura);
+}
+
+.badge-info {
+    background-color: var(--cor-secundaria-clara);
+    color: var(--cor-neutra-escura);
+}
+
+.badge-alerta {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-neutra-escura);
+}
+
+/* =================================
+   ALERTAS - FEEDBACK
+   ================================= */
+
+.alert {
+    padding: var(--espaco-4);
+    margin-top: var(--espaco-4);
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.alert-sucesso {
+    background-color: var(--cor-primaria-clara);
+    color: var(--cor-neutra-escura);
+}
+
+.alert-atencao {
+    background-color: var(--cor-secundaria-clara);
+    color: var(--cor-neutra-escura);
+}
+
+/* =================================
+   TOAST - FEEDBACK
+   ================================= */
+
+.toast {
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-branca);
+    padding: var(--espaco-4);
+    margin-top: var(--espaco-4);
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+/* =================================
+   MODAL - FEEDBACK
+   ================================= */
+
+.modal {
+    margin-top: var(--espaco-5);
+    padding: var(--espaco-6);
+    background-color: rgba(33, 33, 33, 0.7);
+    border-radius: 10px;
+}
+
+.modal-conteudo {
+    background-color: var(--cor-branca);
+    padding: var(--espaco-6);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.botao-modal {
+    margin-top: var(--espaco-5);
+}
+
+/* =================================
+   RESPONSIVIDADE - 5 BREAKPOINTS
+   ================================= */
+
+/* 1º breakpoint - celulares pequenos */
+@media (max-width: 480px) {
+
+    main {
+        padding: var(--espaco-3);
+        margin: var(--espaco-5) auto;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        grid-column: span 1;
+    }
+}
+
+
+/* 2º breakpoint - celulares maiores */
+@media (min-width: 481px) and (max-width: 600px) {
+
+    main {
+        padding: var(--espaco-4);
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section {
+        grid-column: span 2;
+    }
+}
+
+
+/* 3º breakpoint - tablets */
+@media (min-width: 601px) and (max-width: 768px) {
+
+    main {
+        padding: var(--espaco-5);
+    }
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    section {
+        grid-column: span 4;
+    }
+}
+
+
+/* 4º breakpoint - tablets maiores e notebooks */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    main {
+        padding: var(--espaco-6);
+    }
+
+    .grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    section {
+        grid-column: span 8;
+    }
+}
+
+
+/* 5º breakpoint - desktops */
+@media (min-width: 1025px) {
+
+    main {
+        padding: var(--espaco-6);
+    }
+
+    .grid {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    section {
+        grid-column: span 12;
+    }
+}
