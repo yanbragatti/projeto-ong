@@ -69,6 +69,30 @@ header {
     color: var(--cor-branca);
     text-align: center;
     padding: var(--espaco-7);
+    position: relative;
+}
+
+.acessibilidade {
+    position: absolute;
+    top: var(--espaco-4);
+    right: var(--espaco-4);
+    display: flex;
+    gap: var(--espaco-2);
+    align-items: center;
+}
+
+.acessibilidade button {
+    background-color: var(--cor-branca);
+    color: var(--cor-neutra-escura);
+    border: 2px solid var(--cor-secundaria);
+    padding: var(--espaco-2) var(--espaco-3);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--tamanho-pequeno);
+}
+
+.acessibilidade button:hover {
+    background-color: var(--cor-secundaria-clara);
 }
 
 /* =================================
@@ -80,6 +104,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: var(--espaco-6);
     padding: var(--espaco-4);
 }
 
@@ -106,6 +131,14 @@ nav {
 .menu a:hover,
 .dropdown-toggle:hover {
     text-decoration: underline;
+}
+/* Foco visível para navegação por teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
 }
 
 /* =================================
@@ -499,4 +532,130 @@ footer {
     .menu-dropdown:focus-within .dropdown-menu {
         display: flex;
     }
+}
+/* =================================
+   ACESSIBILIDADE - MODOS VISUAIS
+   ================================= */
+
+.acessibilidade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espaco-2);
+    margin-bottom: var(--espaco-3);
+    width: 100%;
+}
+
+.acessibilidade button {
+    background-color: transparent;
+    color: var(--cor-branca);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+.acessibilidade button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* MODO ESCURO */
+
+body.modo-escuro {
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+body.modo-escuro header {
+    background-color: #000000;
+}
+
+body.modo-escuro nav,
+body.modo-escuro footer {
+    background-color: #000000;
+}
+
+body.modo-escuro section {
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+}
+
+body.modo-escuro h2 {
+    color: #FFD54F;
+}
+
+body.modo-escuro input,
+body.modo-escuro textarea {
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+/* MODO PARA DALTONISMO */
+
+body.modo-daltonismo {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+body.modo-daltonismo header {
+    background-color: #005A9C;
+}
+
+body.modo-daltonismo nav,
+body.modo-daltonismo footer {
+    background-color: #003B5C;
+}
+
+body.modo-daltonismo section {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+body.modo-daltonismo h2 {
+    color: #003B5C;
+}
+
+body.modo-daltonismo a {
+    color: #003B5C;
+    text-decoration: underline;
+}
+
+body.modo-daltonismo input,
+body.modo-daltonismo textarea {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+/* =================================
+   CORREÇÃO DO MENU NO MODO DALTONISMO
+   ================================= */
+
+body.modo-daltonismo nav {
+    display: flex;
+    background-color: #003B5C;
+}
+
+body.modo-daltonismo .menu {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-4);
+}
+
+body.modo-daltonismo .menu a,
+body.modo-daltonismo .dropdown-toggle {
+    display: block;
+    color: #FFFFFF;
+}
+
+body.modo-daltonismo .menu-dropdown {
+    display: block;
+}
+
+body.modo-daltonismo .acessibilidade {
+    display: flex;
 }

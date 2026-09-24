@@ -58,6 +58,54 @@ const menu = document.querySelector(".menu");
 
 menuToggle.addEventListener("click", function () {
 
-    menu.classList.toggle("menu-aberto");
+    const menuAberto = menu.classList.toggle("menu-aberto");
 
+    menuToggle.setAttribute(
+        "aria-expanded",
+        menuAberto
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        menuAberto ? "Fechar menu" : "Abrir menu"
+    );
+
+});
+
+// =================================
+// MODOS DE ACESSIBILIDADE
+// =================================
+
+const botaoModoEscuro = document.getElementById("modo-escuro");
+const botaoModoDaltonismo = document.getElementById("modo-daltonismo");
+
+botaoModoEscuro.addEventListener("click", function () {
+
+    document.body.classList.toggle("modo-escuro");
+
+    const ativado = document.body.classList.contains("modo-escuro");
+
+    botaoModoEscuro.setAttribute(
+        "aria-pressed",
+        ativado
+    );
+
+    botaoModoEscuro.textContent =
+        ativado ? "☀️ Modo claro" : "🌙 Modo escuro";
+});
+
+
+botaoModoDaltonismo.addEventListener("click", function () {
+
+    document.body.classList.toggle("modo-daltonismo");
+
+    const ativado = document.body.classList.contains("modo-daltonismo");
+
+    botaoModoDaltonismo.setAttribute(
+        "aria-pressed",
+        ativado
+    );
+
+    botaoModoDaltonismo.textContent =
+        ativado ? "🎨 Modo normal" : "🎨 Modo daltonismo";
 });
