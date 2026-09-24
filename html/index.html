@@ -20,9 +20,14 @@
 
   <nav>
 
-    <button class="menu-toggle" type="button" aria-label="Abrir menu">
-        ☰
-    </button>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+    aria-controls="menu-principal">
+    ☰
+</button>
 
     <div class="menu">
 
@@ -32,11 +37,16 @@
 
         <div class="menu-dropdown">
 
-            <button type="button" class="dropdown-toggle">
-                Projetos
-            </button>
+           <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+    aria-controls="menu-principal">
+    ☰
+</button>
 
-            <div class="dropdown-menu">
+           <div class="menu" id="menu-principal">
 
                 <a href="#projetos" data-rota="projetos">
                     Projetos
