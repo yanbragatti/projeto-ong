@@ -48,3 +48,16 @@ document.querySelectorAll("[data-rota]").forEach(link => {
 // =================================
 
 navegar("inicio");
+
+// =================================
+// MENU MOBILE
+// =================================
+
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
+
+menuToggle.addEventListener("click", function () {
+
+    menu.classList.toggle("menu-aberto");
+
+});

@@ -18,11 +18,53 @@
     </header>
 
 
-    <nav>
-        <a href="#inicio" data-rota="inicio">Início</a>
-        <a href="#projetos" data-rota="projetos">Projetos</a>
-        <a href="#cadastro" data-rota="cadastro">Cadastro</a>
-    </nav>
+  <nav>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menu">
+        ☰
+    </button>
+
+    <div class="menu">
+
+        <a href="#inicio" data-rota="inicio">
+            Início
+        </a>
+
+        <div class="menu-dropdown">
+
+            <button type="button" class="dropdown-toggle">
+                Projetos
+            </button>
+
+            <div class="dropdown-menu">
+
+                <a href="#projetos" data-rota="projetos">
+                    Projetos
+                </a>
+
+                <a href="#projetos" data-rota="projetos">
+                    Doações
+                </a>
+
+                <a href="#projetos" data-rota="projetos">
+                    Voluntariado
+                </a>
+
+                <a href="#projetos" data-rota="projetos">
+                    Campanhas
+                </a>
+
+            </div>
+
+        </div>
+
+        <a href="#cadastro" data-rota="cadastro">
+            Cadastro
+        </a>
+
+    </div>
+
+</nav>
 
 
     <main id="app" class="grid">

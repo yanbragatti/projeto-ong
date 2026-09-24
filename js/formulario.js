@@ -27,16 +27,34 @@ export function configurarFormulario(app) {
     if (dadosCadastro) {
 
         document.getElementById("nome").value =
-            dadosCadastro.nome;
+            dadosCadastro.nome || "";
 
         document.getElementById("email").value =
-            dadosCadastro.email;
+            dadosCadastro.email || "";
+
+        document.getElementById("dataNascimento").value =
+            dadosCadastro.dataNascimento || "";
+
+        document.getElementById("endereco").value =
+            dadosCadastro.endereco || "";
+
+        document.getElementById("cidade").value =
+            dadosCadastro.cidade || "";
+
+        document.getElementById("estado").value =
+            dadosCadastro.estado || "";
+
+        document.getElementById("cpf").value =
+            dadosCadastro.cpf || "";
 
         document.getElementById("telefone").value =
-            dadosCadastro.telefone;
+            dadosCadastro.telefone || "";
+
+        document.getElementById("cep").value =
+            dadosCadastro.cep || "";
 
         document.getElementById("motivo").value =
-            dadosCadastro.motivo;
+            dadosCadastro.motivo || "";
     }
 
 
@@ -48,9 +66,22 @@ export function configurarFormulario(app) {
 
         campo.style.border = "2px solid red";
 
-        const erro = document.createElement("small");
+        const erroExistente =
+            campo.nextElementSibling;
+
+        if (
+            erroExistente &&
+            erroExistente.classList.contains("mensagem-erro")
+        ) {
+            erroExistente.remove();
+        }
+
+        const erro =
+            document.createElement("small");
 
         erro.textContent = mensagem;
+        erro.className = "mensagem-erro";
+
         erro.style.color = "red";
         erro.style.display = "block";
 
@@ -68,6 +99,55 @@ export function configurarFormulario(app) {
 
             event.target.style.border =
                 "2px solid #66BB6A";
+
+            const erro =
+                event.target.nextElementSibling;
+
+            if (
+                erro &&
+                erro.classList.contains("mensagem-erro")
+            ) {
+                erro.remove();
+            }
+        }
+
+
+        // =================================
+        // FORMATAÇÃO DO CPF
+        // =================================
+
+        if (event.target.id === "cpf") {
+
+            let cpf =
+                event.target.value.replace(/\D/g, "");
+
+            cpf = cpf.substring(0, 11);
+
+            if (cpf.length > 9) {
+
+                event.target.value =
+                    cpf.substring(0, 3) + "." +
+                    cpf.substring(3, 6) + "." +
+                    cpf.substring(6, 9) + "-" +
+                    cpf.substring(9, 11);
+
+            } else if (cpf.length > 6) {
+
+                event.target.value =
+                    cpf.substring(0, 3) + "." +
+                    cpf.substring(3, 6) + "." +
+                    cpf.substring(6);
+
+            } else if (cpf.length > 3) {
+
+                event.target.value =
+                    cpf.substring(0, 3) + "." +
+                    cpf.substring(3);
+
+            } else {
+
+                event.target.value = cpf;
+            }
         }
 
 
@@ -77,39 +157,58 @@ export function configurarFormulario(app) {
 
         if (event.target.id === "telefone") {
 
-            let numero =
+            let telefone =
                 event.target.value.replace(/\D/g, "");
 
-            if (numero.length > 11) {
+            telefone = telefone.substring(0, 11);
 
-                numero =
-                    numero.substring(0, 11);
-            }
-
-
-            if (numero.length > 10) {
+            if (telefone.length > 10) {
 
                 event.target.value =
-                    "(" + numero.substring(0, 2) + ") " +
-                    numero.substring(2, 7) + "-" +
-                    numero.substring(7, 11);
+                    "(" + telefone.substring(0, 2) + ") " +
+                    telefone.substring(2, 7) + "-" +
+                    telefone.substring(7, 11);
 
-            } else if (numero.length > 6) {
-
-                event.target.value =
-                    "(" + numero.substring(0, 2) + ") " +
-                    numero.substring(2, 6) + "-" +
-                    numero.substring(6);
-
-            } else if (numero.length > 2) {
+            } else if (telefone.length > 6) {
 
                 event.target.value =
-                    "(" + numero.substring(0, 2) + ") " +
-                    numero.substring(2);
+                    "(" + telefone.substring(0, 2) + ") " +
+                    telefone.substring(2, 6) + "-" +
+                    telefone.substring(6);
+
+            } else if (telefone.length > 2) {
+
+                event.target.value =
+                    "(" + telefone.substring(0, 2) + ") " +
+                    telefone.substring(2);
 
             } else {
 
-                event.target.value = numero;
+                event.target.value = telefone;
+            }
+        }
+
+
+        // =================================
+        // FORMATAÇÃO DO CEP
+        // =================================
+
+        if (event.target.id === "cep") {
+
+            let cep =
+                event.target.value.replace(/\D/g, "");
+
+            cep = cep.substring(0, 8);
+
+            if (cep.length > 5) {
+
+                event.target.value =
+                    cep.substring(0, 5) + "-" +
+                    cep.substring(5, 8);
+
+            } else {
+
+                event.target.value = cep;
             }
         }
 
@@ -125,14 +224,36 @@ export function configurarFormulario(app) {
         event.preventDefault();
 
 
+        // =================================
+        // CAMPOS
+        // =================================
+
         const nome =
             document.getElementById("nome");
 
         const email =
             document.getElementById("email");
 
+        const dataNascimento =
+            document.getElementById("dataNascimento");
+
+        const endereco =
+            document.getElementById("endereco");
+
+        const cidade =
+            document.getElementById("cidade");
+
+        const estado =
+            document.getElementById("estado");
+
+        const cpf =
+            document.getElementById("cpf");
+
         const telefone =
             document.getElementById("telefone");
+
+        const cep =
+            document.getElementById("cep");
 
         const motivo =
             document.getElementById("motivo");
@@ -142,32 +263,23 @@ export function configurarFormulario(app) {
 
 
         // =================================
-        // VALIDAÇÃO DO NOME
+        // VALIDAÇÃO DOS CAMPOS
         // =================================
 
         if (nome.value.trim() === "") {
 
             mostrarErro(
                 nome,
-                "Informe seu nome."
+                "Informe seu nome completo."
             );
 
             formularioValido = false;
-
-        } else {
-
-            nome.style.border =
-                "2px solid #66BB6A";
         }
 
 
-        // =================================
-        // VALIDAÇÃO DO E-MAIL
-        // =================================
-
         if (
             email.value.trim() === "" ||
-            !email.value.includes("@")
+            !email.validity.valid
         ) {
 
             mostrarErro(
@@ -176,41 +288,88 @@ export function configurarFormulario(app) {
             );
 
             formularioValido = false;
-
-        } else {
-
-            email.style.border =
-                "2px solid #66BB6A";
         }
 
 
-        // =================================
-        // VALIDAÇÃO DO TELEFONE
-        // =================================
+        if (dataNascimento.value === "") {
+
+            mostrarErro(
+                dataNascimento,
+                "Informe sua data de nascimento."
+            );
+
+            formularioValido = false;
+        }
+
+
+        if (endereco.value.trim() === "") {
+
+            mostrarErro(
+                endereco,
+                "Informe seu endereço."
+            );
+
+            formularioValido = false;
+        }
+
+
+        if (cidade.value.trim() === "") {
+
+            mostrarErro(
+                cidade,
+                "Informe sua cidade."
+            );
+
+            formularioValido = false;
+        }
+
+
+        if (!/^[A-Za-z]{2}$/.test(estado.value.trim())) {
+
+            mostrarErro(
+                estado,
+                "Informe a sigla do estado, por exemplo: SP."
+            );
+
+            formularioValido = false;
+        }
+
+
+        if (!/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf.value)) {
+
+            mostrarErro(
+                cpf,
+                "Informe o CPF no formato 000.000.000-00."
+            );
+
+            formularioValido = false;
+        }
+
 
         const telefoneNumeros =
             telefone.value.replace(/\D/g, "");
-
 
         if (telefoneNumeros.length !== 11) {
 
             mostrarErro(
                 telefone,
-                "Informe um telefone válido com 11 números."
+                "Informe um telefone com 11 números."
             );
 
             formularioValido = false;
-
-        } else {
-
-            telefone.style.border =
-                "2px solid #66BB6A";
         }
 
 
-        // =================================
-        // VALIDAÇÃO DO MOTIVO
-        // =================================
+        if (!/^\d{5}-\d{3}$/.test(cep.value)) {
+
+            mostrarErro(
+                cep,
+                "Informe o CEP no formato 00000-000."
+            );
+
+            formularioValido = false;
+        }
+
 
         if (motivo.value.trim() === "") {
 
@@ -220,11 +379,6 @@ export function configurarFormulario(app) {
             );
 
             formularioValido = false;
-
-        } else {
-
-            motivo.style.border =
-                "2px solid #66BB6A";
         }
 
 
@@ -238,7 +392,13 @@ export function configurarFormulario(app) {
 
                 nome: nome.value,
                 email: email.value,
+                dataNascimento: dataNascimento.value,
+                endereco: endereco.value,
+                cidade: cidade.value,
+                estado: estado.value.toUpperCase(),
+                cpf: cpf.value,
                 telefone: telefone.value,
+                cep: cep.value,
                 motivo: motivo.value
             };
 

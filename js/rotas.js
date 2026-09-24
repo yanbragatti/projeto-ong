@@ -69,38 +69,104 @@ export const conteudos = {
     `,
 
     cadastro: `
-        <section>
-            <h2>Cadastro de Voluntários</h2>
+    <section>
+        <h2>Cadastro de Voluntários</h2>
 
-            <p>
-                Faça parte da ONG Esperança preenchendo seu cadastro.
-            </p>
+        <p>
+            Faça parte da ONG Esperança preenchendo seu cadastro.
+        </p>
 
-            <form>
+        <form novalidate>
 
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome">
+            <label for="nome">Nome completo:</label>
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                required>
 
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email">
+            <label for="email">E-mail:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required>
 
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone">
+            <label for="dataNascimento">Data de nascimento:</label>
+            <input
+                type="date"
+                id="dataNascimento"
+                name="dataNascimento"
+                required>
 
-                <label for="motivo">
-                    Por que você quer ser voluntário?
-                </label>
+            <label for="endereco">Endereço:</label>
+            <input
+                type="text"
+                id="endereco"
+                name="endereco"
+                required>
 
-                <textarea
-                    id="motivo"
-                    name="motivo"
-                    rows="5"></textarea>
+            <label for="cidade">Cidade:</label>
+            <input
+                type="text"
+                id="cidade"
+                name="cidade"
+                required>
 
-                <button type="submit">
-                    Enviar Cadastro
-                </button>
+            <label for="estado">Estado:</label>
+            <input
+                type="text"
+                id="estado"
+                name="estado"
+                maxlength="2"
+                placeholder="SP"
+                required>
 
-            </form>
-        </section>
-    `
+            <label for="cpf">CPF:</label>
+            <input
+                type="text"
+                id="cpf"
+                name="cpf"
+                placeholder="000.000.000-00"
+                pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}"
+                maxlength="14"
+                required>
+
+            <label for="telefone">Telefone:</label>
+            <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                placeholder="(11) 99999-9999"
+                pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}"
+                maxlength="15"
+                required>
+
+            <label for="cep">CEP:</label>
+            <input
+                type="text"
+                id="cep"
+                name="cep"
+                placeholder="00000-000"
+                pattern="[0-9]{5}-[0-9]{3}"
+                maxlength="9"
+                required>
+
+            <label for="motivo">
+                Por que você quer ser voluntário?
+            </label>
+
+            <textarea
+                id="motivo"
+                name="motivo"
+                rows="5"
+                required></textarea>
+
+            <button type="submit">
+                Enviar Cadastro
+            </button>
+
+        </form>
+    </section>
+`
 };
